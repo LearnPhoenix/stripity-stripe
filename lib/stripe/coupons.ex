@@ -32,8 +32,3 @@ defmodule Stripe.Coupons do
     |> Stripe.Util.handle_stripe_response
   end
 end
-
-# fix type disparity between make_request_with_key and make_request
-# add `Coupons` functionality
-# add `retrieve/1`
-# add tests for `retrieve/1`
