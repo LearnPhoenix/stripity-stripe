@@ -26,19 +26,14 @@ defmodule Stripe.Coupons do
   ```
   """
   def retrieve(params) do
-    retrieve params, Stripe.config_or_env_key
-  end
+    path = @endpoint <> "/" <> params
 
-  @doc """
-  Same as `retrieve/1` using a given stripe key to apply against the account associated.
-
-  ## Examples
-
-  {:ok, result} = Stripe.Coupons.retrieve params
-  """
-  def retrieve(params, key) do
-    Stripe.make_request_with_key(:get, @endpoint, key, params)
+    Stripe.make_request(:get, path, %{}, %{})
     |> Stripe.Util.handle_stripe_response
   end
-
 end
+
+# fix type disparity between make_request_with_key and make_request
+# add `Coupons` functionality
+# add `retrieve/1`
+# add tests for `retrieve/1`
